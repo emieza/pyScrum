@@ -19,7 +19,9 @@ class Projecte(models.Model):
     )
 	grup = models.ForeignKey(Group,
         on_delete=models.CASCADE,
-)
+	)
+	def __str__(self):
+		return self.nom
 
 class Sprint(models.Model):
 	projecte = models.ForeignKey(Projecte,
@@ -46,7 +48,11 @@ class Spec(models.Model):
 	projecte = models.ForeignKey(Projecte,
 		on_delete=models.CASCADE,)
 	sprint = models.ForeignKey(Sprint,
-		on_delete=models.CASCADE,)
+		on_delete=models.CASCADE,
+		null=True,blank=True)
 	developer = models.ForeignKey(
 		settings.AUTH_USER_MODEL,
-		on_delete=models.CASCADE,)
+		on_delete=models.CASCADE,
+		null=True,blank=True)
+	def __str__(self):
+		return self.descripcio
