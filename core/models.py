@@ -11,14 +11,17 @@ class Projecte(models.Model):
         settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE,
         related_name="scrum_master",
+        blank=True,null=True
     )
 	product_owner = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE,
         related_name="product_owner",
+        blank=True,null=True
     )
 	grup = models.ForeignKey(Group,
         on_delete=models.CASCADE,
+        blank=True,null=True
 	)
 	def __str__(self):
 		return self.nom
